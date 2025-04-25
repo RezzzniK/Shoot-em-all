@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 public class Robot : MonoBehaviour
 {
+
     FirstPersonController player;
     NavMeshAgent agent;//refernce for our NavMeshAgent Component
    // [SerializeField] Transform target;//destenation to move to
@@ -21,5 +22,7 @@ public class Robot : MonoBehaviour
        // agent.SetDestination(target.position);
        agent.SetDestination(player.transform.position);
     }
+
     
+
 }

@@ -4,10 +4,13 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     StarterAssetsInputs starterAssets;
+
     void Awake()
     {
         starterAssets=GetComponentInParent<StarterAssetsInputs>();
+      
     }
+    
     void Update()
     {
         if (starterAssets.shoot){
@@ -26,7 +29,15 @@ public class Weapon : MonoBehaviour
                             Mathf.Infinity/**on this step we will shout a ray to infinity distance*/                        
                         ))
             {
-                Debug.Log(hit.collider.gameObject.name);//will tell us what we hitting,
+                Debug.Log(hit.collider.gameObject);//will tell us what we hitting,
+                var enemy=hit.collider.gameObject.GetComponent<EnemyHealth>();
+                if (enemy != null){
+                    enemy.TakeDamage(hit.transform.position);
+                }
+                // else{
+                //     Debug.Log("NOT ENEMY");
+                // }
+
             }
             starterAssets.ShootInput(false);
         }
