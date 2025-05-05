@@ -5,6 +5,7 @@ public class Weapon : MonoBehaviour
 {
     StarterAssetsInputs starterAssets;
     [SerializeField] ParticleSystem []traceEXP;
+    [SerializeField] ParticleSystem muzzleFxp;
 
     void Awake()
     {
@@ -17,7 +18,9 @@ public class Weapon : MonoBehaviour
         if (starterAssets.shoot){
 
             RaycastHit hit;//our raycast type
+            muzzleFxp.Play();
             traceEXP[ Random.Range(0,traceEXP.Length-1)].Play();
+            
             if ( Physics.Raycast(Camera.main.transform.position,/*our origin,
                                                             also we not catching the camera ref
                                                             because the camera ref is built in by unity
