@@ -32,7 +32,8 @@ public class Weapon : MonoBehaviour
                 Debug.Log(hit.collider.gameObject);//will tell us what we hitting,
                 var enemy=hit.collider.gameObject.GetComponent<EnemyHealth>();
                 if (enemy != null){
-                    enemy.TakeDamage(hit.transform.position);
+                    Debug.DrawRay(hit.point, hit.normal, Color.yellow, 1f);
+                    enemy.TakeDamage(hit);
                 }
                 // else{
                 //     Debug.Log("NOT ENEMY");
