@@ -5,8 +5,10 @@ public class Weapon : MonoBehaviour
 {
     StarterAssetsInputs starterAssets;
     [SerializeField] Animator animator;
-    [SerializeField] ParticleSystem []traceEXP;
+    // [SerializeField] ParticleSystem []traceEXP;
     [SerializeField] ParticleSystem muzzleFxp;
+    [SerializeField] ParticleSystem hitEffect;
+
     const string KICK_BACK_STRING="KickBack";//string name of the state that we need to
                                              // pass to the animator
 
@@ -27,7 +29,7 @@ public class Weapon : MonoBehaviour
             animator.Play(KICK_BACK_STRING,-1,0f);//if we not setting normlized 
                                                 // time it will work only first time
                                                     
-            traceEXP[ Random.Range(0,traceEXP.Length-1)].Play();
+            // traceEXP[ Random.Range(0,traceEXP.Length-1)].Play();
             starterAssets.ShootInput(false);
             if ( Physics.Raycast(Camera.main.transform.position,/*our origin,
                                                             also we not catching the camera ref
@@ -43,6 +45,11 @@ public class Weapon : MonoBehaviour
             {
                 Debug.Log(hit.collider.gameObject);//will tell us what we hitting,
                 var enemy=hit.collider.gameObject.GetComponent<EnemyHealth>();
+
+
+                Instantiate(hitEffect, hit.point, Quaternion.identity);
+
+                
                 if (enemy != null){
                    // Debug.DrawRay(hit.point, hit.normal, Color.yellow, 1f);
                     enemy.TakeDamage(hit);
