@@ -4,8 +4,11 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     StarterAssetsInputs starterAssets;
+    [SerializeField] Animator animator;
     [SerializeField] ParticleSystem []traceEXP;
     [SerializeField] ParticleSystem muzzleFxp;
+    const string KICK_BACK_STRING="KickBack";//string name of the state that we need to
+                                             // pass to the animator
 
     void Awake()
     {
@@ -18,9 +21,14 @@ public class Weapon : MonoBehaviour
         if (starterAssets.shoot){
 
             RaycastHit hit;//our raycast type
+           
             muzzleFxp.Play();
+
+            animator.Play(KICK_BACK_STRING,-1,0f);//if we not setting normlized 
+                                                // time it will work only first time
+                                                    
             traceEXP[ Random.Range(0,traceEXP.Length-1)].Play();
-            
+            starterAssets.ShootInput(false);
             if ( Physics.Raycast(Camera.main.transform.position,/*our origin,
                                                             also we not catching the camera ref
                                                             because the camera ref is built in by unity
@@ -40,8 +48,10 @@ public class Weapon : MonoBehaviour
                     enemy.TakeDamage(hit);
                 }
             }
-            starterAssets.ShootInput(false);
+            
         }
 
     }
+
+   
 }
