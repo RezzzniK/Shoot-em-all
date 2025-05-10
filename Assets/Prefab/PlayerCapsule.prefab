@@ -9714,9 +9714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f8c617f408a3c43936c294ddfc43fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 4072162405053511301}
   muzzleFxp: {fileID: 1371272410900558275}
-  hitEffect: {fileID: 6140669596326291907, guid: f23567cfe9c07e54081423769f351b20, type: 3}
 --- !u!1 &7001723705747770547
 GameObject:
   m_ObjectHideFlags: 0
@@ -9869,6 +9867,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4095973069987970721}
   - component: {fileID: 4072162405053511301}
+  - component: {fileID: 1170445987762764140}
   m_Layer: 3
   m_Name: Active Weapon
   m_TagString: Untagged
@@ -9914,6 +9913,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1170445987762764140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8291597255563038378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79a023e002d76c74681a72e0a65e0a0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSO: {fileID: 11400000, guid: c5c30eceb11bc5149b2ab394b0a38963, type: 2}
 --- !u!1 &8461044925134280581
 GameObject:
   m_ObjectHideFlags: 0
@@ -14812,7 +14824,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8932481198252999606}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.7776593, z: -0, w: 0.62868595}
+  m_LocalRotation: {x: 0, y: -0.7776619, z: 0, w: 0.62868273}
   m_LocalPosition: {x: 0.45, y: 2.01, z: 9.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
