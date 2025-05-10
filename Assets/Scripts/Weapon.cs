@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour
     StarterAssetsInputs starterAssets;
     [SerializeField] Animator animator;
     // [SerializeField] ParticleSystem []traceEXP;
+    [SerializeField] int damageAmount=1;
     [SerializeField] ParticleSystem muzzleFxp;
     [SerializeField] ParticleSystem hitEffect;
 
@@ -52,7 +53,8 @@ public class Weapon : MonoBehaviour
                 
                 if (enemy != null){
                    // Debug.DrawRay(hit.point, hit.normal, Color.yellow, 1f);
-                    enemy.TakeDamage(hit);
+                    enemy.TakeDamage(hit,damageAmount);
+                    
                 }
             }
             
