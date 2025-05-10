@@ -7,5 +7,6 @@ public class WeaponSO:ScriptableObject
     public float FireRate=.5f;
 
     public ParticleSystem hitEffect;
+    public bool automaticWeapon=false;
 }
  

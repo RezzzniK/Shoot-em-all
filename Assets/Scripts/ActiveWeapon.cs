@@ -22,7 +22,9 @@ public class ActiveWeapon : MonoBehaviour{
             firarateBlocked=true;
             currentWeapon.Shoot(weaponSO);
             animator.Play(KICK_BACK_STRING, -1, 0f);
-            starterAssets.ShootInput(false);
+            if(!weaponSO.automaticWeapon){
+                 starterAssets.ShootInput(false);
+            }
             StartCoroutine(FireRate()); 
         }
     }
