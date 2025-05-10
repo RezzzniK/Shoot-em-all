@@ -1,24 +1,21 @@
 using StarterAssets;
 using UnityEngine;
-
 public class Weapon : MonoBehaviour
 {
     StarterAssetsInputs starterAssets;
     [SerializeField] Animator animator;
     // [SerializeField] ParticleSystem []traceEXP;
-    [SerializeField] int damageAmount=1;
+    [SerializeField] WeaponSO weaponSO;
+    //[SerializeField] int damageAmount=1;
     [SerializeField] ParticleSystem muzzleFxp;
     [SerializeField] ParticleSystem hitEffect;
-
     const string KICK_BACK_STRING="KickBack";//string name of the state that we need to
                                              // pass to the animator
-
     void Awake()
     {
         starterAssets=GetComponentInParent<StarterAssetsInputs>();
       
     }
-    
     void Update()
     {
         if (starterAssets.shoot){
@@ -53,7 +50,7 @@ public class Weapon : MonoBehaviour
                 
                 if (enemy != null){
                    // Debug.DrawRay(hit.point, hit.normal, Color.yellow, 1f);
-                    enemy.TakeDamage(hit,damageAmount);
+                    enemy.TakeDamage(hit,weaponSO.Damage);
                     
                 }
             }
