@@ -18,3 +18,6 @@ MonoBehaviour:
   zoom: 1
   hitEffect: {fileID: 6140669596326291907, guid: f23567cfe9c07e54081423769f351b20, type: 3}
   automaticWeapon: 0
+  zoomInValue: 10
+  zoomOutValue: 40
+  rotationAmount: 0.5

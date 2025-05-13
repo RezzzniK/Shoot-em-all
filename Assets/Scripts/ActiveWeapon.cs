@@ -1,18 +1,26 @@
 using System.Collections;
+using Cinemachine;
 using StarterAssets;
-using Unity.VisualScripting;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class ActiveWeapon : MonoBehaviour{
     [SerializeField] WeaponSO weaponSO;
+    [SerializeField]Image zoom;
+    [SerializeField] GameObject followCamera;
     StarterAssetsInputs starterAssets;
+    FirstPersonController firstPersonController;
     Animator animator;
     Weapon currentWeapon;
+    CinemachineVirtualCamera camera;
+    float defaultRotationSpeed=1f;
     bool firarateBlocked=false;
     const string KICK_BACK_STRING="KickBack";                         
     void Awake(){
         starterAssets=GetComponentInParent<StarterAssetsInputs>();
-        animator=GetComponent<Animator>();
+        animator=GetComponent<Animator>(); 
+        camera=followCamera.GetComponent<CinemachineVirtualCamera>();
+        firstPersonController=GetComponentInParent<FirstPersonController>();
+        firstPersonController.ChangeRoatationAmount(defaultRotationSpeed);
     }
     void Start(){
         currentWeapon=GetComponentInChildren<Weapon>();
@@ -29,28 +37,32 @@ public class ActiveWeapon : MonoBehaviour{
             StartCoroutine(FireRate()); 
         }
     }
-
     IEnumerator FireRate(){
         yield return new WaitForSeconds(weaponSO.FireRate);
         firarateBlocked=false;
     }
-
-
     public void SwitchWeapon(WeaponSO weaponPickUp){
-
         if(currentWeapon){
             Destroy(currentWeapon.gameObject);
         }
         weaponSO=weaponPickUp;//swaping weapons
+        if (!weaponSO.zoom){
+            zoom.enabled = false;
+            camera.m_Lens.FieldOfView=weaponSO.zoomOutValue;
+        }
+        firstPersonController.ChangeRoatationAmount(weaponSO.rotationAmount);
         currentWeapon=Instantiate(weaponPickUp.weaponPrefab,transform).GetComponent<Weapon>();
-       
     }
-
     public void HandleZoom(){
         if(!weaponSO.zoom)return;
         if(starterAssets.zoom){
+            zoom.enabled = true;
+            camera.m_Lens.FieldOfView=weaponSO.zoomInValue;
+
             Debug.Log("zoom in");
         }else{
+            zoom.enabled = false;
+             camera.m_Lens.FieldOfView=weaponSO.zoomOutValue;
             Debug.Log("not zoom");
         }
     }

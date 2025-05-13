@@ -119,6 +119,81 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &9064302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9064303}
+  - component: {fileID: 9064305}
+  - component: {fileID: 9064304}
+  m_Layer: 5
+  m_Name: ZOOM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &9064303
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9064302}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 285754160}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &9064304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9064302}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 52a5735d065236542b52ea64d3dccb26, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &9064305
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9064302}
+  m_CullTransparentMesh: 1
 --- !u!1 &42203667
 GameObject:
   m_ObjectHideFlags: 0
@@ -5572,6 +5647,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!224 &285754160 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7175474881793994750, guid: 676fab9229fcfa4408a2d687b3fe9f32, type: 3}
+  m_PrefabInstance: {fileID: 61797941253930370}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &286996915
 GameObject:
   m_ObjectHideFlags: 0
@@ -36589,6 +36669,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1385892497}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1035863297 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9060309082938178066, guid: fa807fe6b7ce5de43b9b23d577d461cd, type: 3}
+  m_PrefabInstance: {fileID: 4090882379523831122}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1098593656 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9137348312404272566, guid: 5f27937402da6c549923dc596d76bc1d, type: 3}
@@ -44949,7 +45034,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7175474881793994750, guid: 676fab9229fcfa4408a2d687b3fe9f32, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9064303}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 676fab9229fcfa4408a2d687b3fe9f32, type: 3}
 --- !u!1001 &2384544632961148108
@@ -45004,6 +45092,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9020839923502557116, guid: a96672e48d0450c4b878b88ac31d7c27, type: 3}
+      propertyPath: field of view
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -45034,9 +45126,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1170445987762764140, guid: 2375d1a83e6ab1247b3cda253ddf8e69, type: 3}
+      propertyPath: zoom
+      value: 
+      objectReference: {fileID: 9064304}
+    - target: {fileID: 1170445987762764140, guid: 2375d1a83e6ab1247b3cda253ddf8e69, type: 3}
       propertyPath: weaponSO
       value: 
       objectReference: {fileID: 11400000, guid: c5c30eceb11bc5149b2ab394b0a38963, type: 2}
+    - target: {fileID: 1170445987762764140, guid: 2375d1a83e6ab1247b3cda253ddf8e69, type: 3}
+      propertyPath: followCamera
+      value: 
+      objectReference: {fileID: 1035863297}
     - target: {fileID: 1371272410900558275, guid: 2375d1a83e6ab1247b3cda253ddf8e69, type: 3}
       propertyPath: looping
       value: 0
@@ -45124,6 +45224,10 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 4135013736958286713}
+    - target: {fileID: 2214311270409318257, guid: fa807fe6b7ce5de43b9b23d577d461cd, type: 3}
+      propertyPath: m_Lens.FieldOfView
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 7982663052248380398, guid: fa807fe6b7ce5de43b9b23d577d461cd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.77
