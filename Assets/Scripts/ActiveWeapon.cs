@@ -18,6 +18,7 @@ public class ActiveWeapon : MonoBehaviour{
         currentWeapon=GetComponentInChildren<Weapon>();
     }
     void Update(){
+        HandleZoom() ;
         if (starterAssets.shoot && !firarateBlocked){
             firarateBlocked=true;
             currentWeapon.Shoot(weaponSO);
@@ -43,5 +44,14 @@ public class ActiveWeapon : MonoBehaviour{
         weaponSO=weaponPickUp;//swaping weapons
         currentWeapon=Instantiate(weaponPickUp.weaponPrefab,transform).GetComponent<Weapon>();
        
+    }
+
+    public void HandleZoom(){
+        if(!weaponSO.zoom)return;
+        if(starterAssets.zoom){
+            Debug.Log("zoom in");
+        }else{
+            Debug.Log("not zoom");
+        }
     }
 }

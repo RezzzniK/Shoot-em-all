@@ -3,10 +3,8 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [SerializeField] ParticleSystem muzzleFxp;
-    Light light;
-    /// <summary>
-    /// Awake is called when the script instance is being loaded.
-    /// </summary>
+    Light light;//TODO muzzel heat when shooting for machine gun
+ 
     void Awake()
     {
         light = GetComponentInChildren<Light>();
