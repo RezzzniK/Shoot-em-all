@@ -46,11 +46,13 @@ public class ActiveWeapon : MonoBehaviour{
             Destroy(currentWeapon.gameObject);
         }
         weaponSO=weaponPickUp;//swaping weapons
+        firstPersonController.ChangeRoatationAmount(weaponSO.rotationAmount);
         if (!weaponSO.zoom){
             zoom.enabled = false;
             camera.m_Lens.FieldOfView=weaponSO.zoomOutValue;
+        }else{
+             firstPersonController.ChangeRoatationAmount(defaultRotationSpeed);
         }
-        firstPersonController.ChangeRoatationAmount(weaponSO.rotationAmount);
         currentWeapon=Instantiate(weaponPickUp.weaponPrefab,transform).GetComponent<Weapon>();
     }
     public void HandleZoom(){
@@ -58,11 +60,13 @@ public class ActiveWeapon : MonoBehaviour{
         if(starterAssets.zoom){
             zoom.enabled = true;
             camera.m_Lens.FieldOfView=weaponSO.zoomInValue;
-
+            firstPersonController.ChangeRoatationAmount(weaponSO.rotationAmount);
             Debug.Log("zoom in");
+
         }else{
             zoom.enabled = false;
              camera.m_Lens.FieldOfView=weaponSO.zoomOutValue;
+             firstPersonController.ChangeRoatationAmount(defaultRotationSpeed);
             Debug.Log("not zoom");
         }
     }
