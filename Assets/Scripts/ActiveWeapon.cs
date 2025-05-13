@@ -33,4 +33,15 @@ public class ActiveWeapon : MonoBehaviour{
         yield return new WaitForSeconds(weaponSO.FireRate);
         firarateBlocked=false;
     }
+
+
+    public void SwitchWeapon(WeaponSO weaponPickUp){
+
+        if(currentWeapon){
+            Destroy(currentWeapon.gameObject);
+        }
+        weaponSO=weaponPickUp;//swaping weapons
+        currentWeapon=Instantiate(weaponPickUp.weaponPrefab,transform).GetComponent<Weapon>();
+       
+    }
 }
