@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7642307932701762890}
   - component: {fileID: 8231114093984014348}
   - component: {fileID: 6937772499915964131}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Base Weapon PickUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,7 +81,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3181080342727394614}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 1899783477390758473}
   - component: {fileID: 440342153565842294}
   - component: {fileID: 8923887342643088233}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 8775903736551609552}
   - component: {fileID: 6952287945190138407}
   - component: {fileID: 1047050220834866100}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -47,6 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muzzleFxp: {fileID: 6098471458980797020}
+  interactionLayers:
+    serializedVersion: 2
+    m_Bits: 127
 --- !u!1 &2778365931178092332
 GameObject:
   m_ObjectHideFlags: 0

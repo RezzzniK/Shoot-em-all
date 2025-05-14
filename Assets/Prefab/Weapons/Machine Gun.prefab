@@ -5031,6 +5031,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muzzleFxp: {fileID: 3892314145478306975}
+  interactionLayers:
+    serializedVersion: 2
+    m_Bits: 127
 --- !u!1001 &4828051908827430632
 PrefabInstance:
   m_ObjectHideFlags: 0
