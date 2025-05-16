@@ -1,16 +1,12 @@
 using UnityEngine;
 
-public class AmmoPickUp : MonoBehaviour
+public class AmmoPickUp : PickUpBase
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] int ammoFillAmount=150;
+    protected override void PickUp(ActiveWeapon activeWeapon)
     {
-        
+        activeWeapon.AdjustAmmoAmount(ammoFillAmount);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  
 }

@@ -18,18 +18,22 @@ public class ActiveWeapon : MonoBehaviour{
     float defaultRotationSpeed=1f;
     bool firarateBlocked=false;
     int currentAmmo;
-    const string KICK_BACK_STRING = "KickBack";                         
-    void Awake(){
-        starterAssets=GetComponentInParent<StarterAssetsInputs>();
-        animator=GetComponent<Animator>(); 
-        camera=followCamera.GetComponent<CinemachineVirtualCamera>();
-        firstPersonController=GetComponentInParent<FirstPersonController>();
+    int max_ammo=0;
+    const string KICK_BACK_STRING = "KickBack";
+    void Awake()
+    {
+        starterAssets = GetComponentInParent<StarterAssetsInputs>();
+        animator = GetComponent<Animator>();
+        camera = followCamera.GetComponent<CinemachineVirtualCamera>();
+        firstPersonController = GetComponentInParent<FirstPersonController>();
         firstPersonController.ChangeRoatationAmount(defaultRotationSpeed);
+        
     }
     void Start()
     {
-        SwitchWeapon(startingWeaponSO);//on start we will switch our weapon to startingWeaponSO
-       
+        //on start we will switch our weapon to startingWeaponSO
+        SwitchWeapon(startingWeaponSO);
+        max_ammo=currentWeaponSO.magazineSize;
         //currentWeapon =GetComponentInChildren<Weapon>();
     }
     void Update(){
@@ -47,12 +51,14 @@ public class ActiveWeapon : MonoBehaviour{
     }
     public void AdjustAmmoAmount(int amount){///adjusting amount ammo on pickUp and when firing 
         currentAmmo+=amount;
+        if(currentAmmo > max_ammo) currentAmmo= max_ammo;
         ammoText.text =currentAmmo.ToString("D3");//we want to display only 2 digits
     }
     public void SwitchWeapon(WeaponSO weaponPickUp){
         if(currentWeapon)Destroy(currentWeapon.gameObject);
         //if(currentWeaponSO != weaponPickUp)
         currentAmmo =0;//init ammo to not exceed magazine size
+        max_ammo=weaponPickUp.magazineSize;
         AdjustAmmoAmount(weaponPickUp.magazineSize);
         currentWeaponSO =weaponPickUp;//swaping weapons
         firstPersonController.ChangeRoatationAmount(currentWeaponSO.rotationAmount);
