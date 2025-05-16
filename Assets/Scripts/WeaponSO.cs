@@ -12,4 +12,5 @@ public class WeaponSO : ScriptableObject
     public float zoomInValue = 10f;
     public float zoomOutValue = 40f;
     public float rotationAmount = 1f;
+    public int magazineSize = 0;
 }

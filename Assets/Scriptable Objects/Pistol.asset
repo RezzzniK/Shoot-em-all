@@ -15,5 +15,10 @@ MonoBehaviour:
   weaponPrefab: {fileID: 8626134495261680170, guid: 2d15cc80ef254bd4ea0c67ba6cb1af55, type: 3}
   Damage: 1
   FireRate: 0.5
+  zoom: 0
   hitEffect: {fileID: 6140669596326291907, guid: f23567cfe9c07e54081423769f351b20, type: 3}
   automaticWeapon: 0
+  zoomInValue: 10
+  zoomOutValue: 40
+  rotationAmount: 1
+  magazineSize: 15

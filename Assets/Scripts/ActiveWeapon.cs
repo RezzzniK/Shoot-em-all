@@ -1,12 +1,15 @@
 using System.Collections;
 using Cinemachine;
 using StarterAssets;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 public class ActiveWeapon : MonoBehaviour{
-    [SerializeField] WeaponSO weaponSO;
+    [SerializeField] WeaponSO startingWeaponSO;
     [SerializeField]Image zoom;
     [SerializeField] GameObject followCamera;
+    [SerializeField] TMP_Text ammoText;
+    WeaponSO currentWeaponSO;
     StarterAssetsInputs starterAssets;
     FirstPersonController firstPersonController;
     Animator animator;
@@ -14,7 +17,8 @@ public class ActiveWeapon : MonoBehaviour{
     CinemachineVirtualCamera camera;
     float defaultRotationSpeed=1f;
     bool firarateBlocked=false;
-    const string KICK_BACK_STRING="KickBack";                         
+    int currentAmmo;
+    const string KICK_BACK_STRING = "KickBack";                         
     void Awake(){
         starterAssets=GetComponentInParent<StarterAssetsInputs>();
         animator=GetComponent<Animator>(); 
@@ -22,50 +26,58 @@ public class ActiveWeapon : MonoBehaviour{
         firstPersonController=GetComponentInParent<FirstPersonController>();
         firstPersonController.ChangeRoatationAmount(defaultRotationSpeed);
     }
-    void Start(){
-        currentWeapon=GetComponentInChildren<Weapon>();
+    void Start()
+    {
+        SwitchWeapon(startingWeaponSO);//on start we will switch our weapon to startingWeaponSO
+       
+        //currentWeapon =GetComponentInChildren<Weapon>();
     }
     void Update(){
         HandleZoom() ;
-        if (starterAssets.shoot && !firarateBlocked){
+        if (starterAssets.shoot && !firarateBlocked && currentAmmo>0){
             firarateBlocked=true;
-            currentWeapon.Shoot(weaponSO);
+            currentWeapon.Shoot(currentWeaponSO);
             animator.Play(KICK_BACK_STRING, -1, 0f);
-            if(!weaponSO.automaticWeapon){
+            if(!currentWeaponSO.automaticWeapon){
                  starterAssets.ShootInput(false);
             }
+            AdjustAmmoAmount(-1);
             StartCoroutine(FireRate()); 
         }
     }
-    IEnumerator FireRate(){
-        yield return new WaitForSeconds(weaponSO.FireRate);
-        firarateBlocked=false;
+    public void AdjustAmmoAmount(int amount){///adjusting amount ammo on pickUp and when firing 
+        currentAmmo+=amount;
+        ammoText.text =currentAmmo.ToString("D3");//we want to display only 2 digits
     }
     public void SwitchWeapon(WeaponSO weaponPickUp){
-        if(currentWeapon){
-            Destroy(currentWeapon.gameObject);
-        }
-        weaponSO=weaponPickUp;//swaping weapons
-        firstPersonController.ChangeRoatationAmount(weaponSO.rotationAmount);
-        if (!weaponSO.zoom){
+        if(currentWeapon)Destroy(currentWeapon.gameObject);
+        //if(currentWeaponSO != weaponPickUp)
+        currentAmmo =0;//init ammo to not exceed magazine size
+        AdjustAmmoAmount(weaponPickUp.magazineSize);
+        currentWeaponSO =weaponPickUp;//swaping weapons
+        firstPersonController.ChangeRoatationAmount(currentWeaponSO.rotationAmount);
+        if (!currentWeaponSO.zoom){
             zoom.enabled = false;
-            camera.m_Lens.FieldOfView=weaponSO.zoomOutValue;
-        }else{
-             firstPersonController.ChangeRoatationAmount(defaultRotationSpeed);
-        }
+            camera.m_Lens.FieldOfView=currentWeaponSO.zoomOutValue;
+        }else firstPersonController.ChangeRoatationAmount(defaultRotationSpeed);
         currentWeapon=Instantiate(weaponPickUp.weaponPrefab,transform).GetComponent<Weapon>();
     }
+    IEnumerator FireRate(){
+        yield return new WaitForSeconds(currentWeaponSO.FireRate);
+        firarateBlocked=false;
+    }
+ 
     public void HandleZoom(){
-        if(!weaponSO.zoom)return;
+        if(!currentWeaponSO.zoom)return;
         if(starterAssets.zoom){
             zoom.enabled = true;
-            camera.m_Lens.FieldOfView=weaponSO.zoomInValue;
-            firstPersonController.ChangeRoatationAmount(weaponSO.rotationAmount);
+            camera.m_Lens.FieldOfView=currentWeaponSO.zoomInValue;
+            firstPersonController.ChangeRoatationAmount(currentWeaponSO.rotationAmount);
             Debug.Log("zoom in");
 
         }else{
             zoom.enabled = false;
-             camera.m_Lens.FieldOfView=weaponSO.zoomOutValue;
+             camera.m_Lens.FieldOfView=currentWeaponSO.zoomOutValue;
              firstPersonController.ChangeRoatationAmount(defaultRotationSpeed);
             Debug.Log("not zoom");
         }

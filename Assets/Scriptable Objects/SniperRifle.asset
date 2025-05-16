@@ -21,3 +21,4 @@ MonoBehaviour:
   zoomInValue: 10
   zoomOutValue: 40
   rotationAmount: 0.5
+  magazineSize: 10
