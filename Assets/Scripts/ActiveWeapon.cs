@@ -9,6 +9,7 @@ public class ActiveWeapon : MonoBehaviour{
     [SerializeField]Image zoom;
     [SerializeField] GameObject followCamera;
     [SerializeField] TMP_Text ammoText;
+    [SerializeField] Camera weaponCamera;
     WeaponSO currentWeaponSO;
     StarterAssetsInputs starterAssets;
     FirstPersonController firstPersonController;
@@ -20,14 +21,12 @@ public class ActiveWeapon : MonoBehaviour{
     int currentAmmo;
     int max_ammo=0;
     const string KICK_BACK_STRING = "KickBack";
-    void Awake()
-    {
+    void Awake(){
         starterAssets = GetComponentInParent<StarterAssetsInputs>();
         animator = GetComponent<Animator>();
         camera = followCamera.GetComponent<CinemachineVirtualCamera>();
         firstPersonController = GetComponentInParent<FirstPersonController>();
         firstPersonController.ChangeRoatationAmount(defaultRotationSpeed);
-        
     }
     void Start()
     {
@@ -39,7 +38,8 @@ public class ActiveWeapon : MonoBehaviour{
     void Update(){
         HandleZoom() ;
         if (starterAssets.shoot && !firarateBlocked && currentAmmo>0){
-            firarateBlocked=true;
+            
+            firarateBlocked =true;
             currentWeapon.Shoot(currentWeaponSO);
             animator.Play(KICK_BACK_STRING, -1, 0f);
             if(!currentWeaponSO.automaticWeapon){
@@ -61,11 +61,15 @@ public class ActiveWeapon : MonoBehaviour{
         max_ammo=weaponPickUp.magazineSize;
         AdjustAmmoAmount(weaponPickUp.magazineSize);
         currentWeaponSO =weaponPickUp;//swaping weapons
+        
         firstPersonController.ChangeRoatationAmount(currentWeaponSO.rotationAmount);
-        if (!currentWeaponSO.zoom){
+        if (!currentWeaponSO.zoom)
+        {
             zoom.enabled = false;
-            camera.m_Lens.FieldOfView=currentWeaponSO.zoomOutValue;
-        }else firstPersonController.ChangeRoatationAmount(defaultRotationSpeed);
+            camera.m_Lens.FieldOfView = currentWeaponSO.zoomOutValue;
+            weaponCamera.fieldOfView=currentWeaponSO.zoomOutValue;
+        }
+        else firstPersonController.ChangeRoatationAmount(defaultRotationSpeed);
         currentWeapon=Instantiate(weaponPickUp.weaponPrefab,transform).GetComponent<Weapon>();
     }
     IEnumerator FireRate(){
@@ -78,12 +82,14 @@ public class ActiveWeapon : MonoBehaviour{
         if(starterAssets.zoom){
             zoom.enabled = true;
             camera.m_Lens.FieldOfView=currentWeaponSO.zoomInValue;
+            weaponCamera.fieldOfView=currentWeaponSO.zoomInValue;
             firstPersonController.ChangeRoatationAmount(currentWeaponSO.rotationAmount);
             Debug.Log("zoom in");
 
         }else{
             zoom.enabled = false;
              camera.m_Lens.FieldOfView=currentWeaponSO.zoomOutValue;
+             weaponCamera.fieldOfView=currentWeaponSO.zoomOutValue;
              firstPersonController.ChangeRoatationAmount(defaultRotationSpeed);
             Debug.Log("not zoom");
         }
