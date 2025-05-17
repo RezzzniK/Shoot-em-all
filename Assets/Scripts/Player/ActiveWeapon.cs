@@ -84,14 +84,14 @@ public class ActiveWeapon : MonoBehaviour{
             camera.m_Lens.FieldOfView=currentWeaponSO.zoomInValue;
             weaponCamera.fieldOfView=currentWeaponSO.zoomInValue;
             firstPersonController.ChangeRoatationAmount(currentWeaponSO.rotationAmount);
-            Debug.Log("zoom in");
+            // Debug.Log("zoom in");
 
         }else{
             zoom.enabled = false;
              camera.m_Lens.FieldOfView=currentWeaponSO.zoomOutValue;
              weaponCamera.fieldOfView=currentWeaponSO.zoomOutValue;
              firstPersonController.ChangeRoatationAmount(defaultRotationSpeed);
-            Debug.Log("not zoom");
+            // Debug.Log("not zoom");
         }
     }
 }

@@ -22,7 +22,7 @@ public class Weapon : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity,interactionLayers,QueryTriggerInteraction.Ignore))
         {
-            Debug.Log(hit.collider.gameObject);
+            // Debug.Log(hit.collider.gameObject);
             var enemy = hit.collider.gameObject.GetComponent<EnemyHealth>();
             Instantiate(weaponSO.hitEffect, hit.point, Quaternion.identity);
             if (enemy != null)
