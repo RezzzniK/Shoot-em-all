@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7346844974298046559}
   - component: {fileID: 2036777873708696304}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: SniperRifel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 665408946046009246}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 6470116689523788796}
   - component: {fileID: 6098471458980797020}
   - component: {fileID: 758611512301608268}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Muzzle Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4928,7 +4928,7 @@ GameObject:
   - component: {fileID: 5051181041643449147}
   - component: {fileID: 5051181041628245627}
   - component: {fileID: 5051181041628338139}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FX_Steam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9799,6 +9799,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 860f35edef6dcfe40b58b14593dfeafb, type: 3}
       propertyPath: m_Name
       value: Sniper_01_Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 860f35edef6dcfe40b58b14593dfeafb, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
