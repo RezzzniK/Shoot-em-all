@@ -4,25 +4,33 @@ using UnityEngine.AI;
 
 public class Robot : MonoBehaviour
 {
-
     FirstPersonController player;
     NavMeshAgent agent;//refernce for our NavMeshAgent Component
-   // [SerializeField] Transform target;//destenation to move to
+    const string PLAYER = "Player";
+    EnemyHealth health;
     void Awake()
     {
-        agent=GetComponent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
+        health = GetComponentInChildren<EnemyHealth>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player=FindFirstObjectByType<FirstPersonController>();
+        player = FindFirstObjectByType<FirstPersonController>();
         //agent.SetDestination(target.position);
     }
-    void Update(){
-       // agent.SetDestination(target.position);
-       agent.SetDestination(player.transform.position);
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == PLAYER)
+        {
+            health.SelfDestruct();
+        }
+    }
+    void Update()
+    {
+        // agent.SetDestination(target.position);
+        agent.SetDestination(player.transform.position);
     }
 
-    
 
 }

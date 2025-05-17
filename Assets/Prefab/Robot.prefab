@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 9137348312404272566}
   - component: {fileID: 7912774490040781290}
   - component: {fileID: 1687717636885811185}
+  - component: {fileID: 422214355498319167}
   m_Layer: 6
   m_Name: Robot
   m_TagString: Untagged
@@ -100,6 +101,29 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &422214355498319167
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4377934486119518499}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1190676876665372091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -243,7 +267,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoints: 10
   hitExp:
-  - {fileID: 2292882936124641526, guid: 771eae94062261141a9ba06f0108382f, type: 3}
-  - {fileID: 5651314192571350924, guid: e89dca4cbe0d3734181b20eb9b2d4e1f, type: 3}
-  - {fileID: 280614503744773540, guid: 7b75f0f09c7bc394f96e94e885700a99, type: 3}
+  - {fileID: 0}
   robotExp: {fileID: 4891984133201505550, guid: 9bf9cb2e058497d44bab6085487f8dbe, type: 3}

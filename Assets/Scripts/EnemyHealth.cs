@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField]   int hitPoints=10; 
-    [SerializeField] ParticleSystem []hitExp;
+    [SerializeField] int hitPoints = 10;
+    [SerializeField] ParticleSystem[] hitExp;
     [SerializeField] ParticleSystem robotExp;
     public void TakeDamage(RaycastHit hit, int damageAmount)
     {
@@ -21,10 +21,15 @@ public class EnemyHealth : MonoBehaviour
 
         if (hitPoints <= 0)
         {
-            Instantiate(robotExp, transform.position, Quaternion.identity);
-            Destroy(this.gameObject);
+            SelfDestruct();
         }
-       
+
+    }
+
+    public void SelfDestruct()
+    {
+        Instantiate(robotExp, transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
     }
 
 }
