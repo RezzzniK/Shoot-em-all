@@ -6,6 +6,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] int hitPoints = 10;
     [SerializeField] ParticleSystem[] hitExp;
     [SerializeField] ParticleSystem robotExp;
+    
     public void TakeDamage(RaycastHit hit, int damageAmount)
     {
         //TODO transform on the particle sys where is the hit point

@@ -28,8 +28,7 @@ public class Robot : MonoBehaviour
     }
     void Update()
     {
-        // agent.SetDestination(target.position);
-        agent.SetDestination(player.transform.position);
+        if (player) agent.SetDestination(player.transform.position);
     }
 
 

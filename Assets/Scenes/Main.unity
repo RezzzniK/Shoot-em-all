@@ -367,6 +367,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4202716908883080838, guid: 7b75f0f09c7bc394f96e94e885700a99, type: 3}
   m_PrefabInstance: {fileID: 7673460735503749607}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &54488432 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 280614503744773540, guid: 7b75f0f09c7bc394f96e94e885700a99, type: 3}
+  m_PrefabInstance: {fileID: 7673460735503749607}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &77337280
 Mesh:
   m_ObjectHideFlags: 0
@@ -17751,6 +17756,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 629610169}
   m_CullTransparentMesh: 1
+--- !u!1 &646817898 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8932481198252999606, guid: 2375d1a83e6ab1247b3cda253ddf8e69, type: 3}
+  m_PrefabInstance: {fileID: 2439247188654009431}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &646817905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646817898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f586ff5251de42d4fb1ab564af2b993d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 1
 --- !u!4 &672681188 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5782166229082868691, guid: dbdceaee1bd8c4a4ab708cebad724f18, type: 3}
@@ -25160,6 +25183,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 42203668}
     m_Modifications:
+    - target: {fileID: 691496347232662534, guid: 5f27937402da6c549923dc596d76bc1d, type: 3}
+      propertyPath: 'hitExp.Array.data[0]'
+      value: 
+      objectReference: {fileID: 54488432}
     - target: {fileID: 4377934486119518499, guid: 5f27937402da6c549923dc596d76bc1d, type: 3}
       propertyPath: m_Name
       value: Robot
@@ -31253,7 +31280,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3111912412287177558, guid: 2375d1a83e6ab1247b3cda253ddf8e69, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1625409316}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8932481198252999606, guid: 2375d1a83e6ab1247b3cda253ddf8e69, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 646817905}
   m_SourcePrefab: {fileID: 100100000, guid: 2375d1a83e6ab1247b3cda253ddf8e69, type: 3}
 --- !u!1001 &4090882379523831122
 PrefabInstance:
