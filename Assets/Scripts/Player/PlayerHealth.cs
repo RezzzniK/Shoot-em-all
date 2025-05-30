@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [Range(1,10)]
     [SerializeField] int playerHealth = 10;
     [SerializeField] CinemachineVirtualCamera deathCamera;
     [SerializeField] Transform weaponCamera;//we need only transform from this camera to make transition to death camera
