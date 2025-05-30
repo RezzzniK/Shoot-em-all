@@ -1,15 +1,20 @@
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] int playerHealth = 5;
+    [SerializeField] int playerHealth = 10;
     [SerializeField] CinemachineVirtualCamera deathCamera;
     [SerializeField] Transform weaponCamera;//we need only transform from this camera to make transition to death camera
     [SerializeField] int deathCameraPriority = 20;
-     public void TakeDamage(int damageAmount)
+    [SerializeField] Image[] shieldBars;
+    public void TakeDamage(int damageAmount)
     {
         playerHealth -= damageAmount;
+        Debug.Log("" + playerHealth);
+        AdjustShieldBars(playerHealth);
         if (playerHealth <= 0)
         {
             //before we destroy our player GameObj lets unparent our weapon camera:
@@ -18,11 +23,34 @@ public class PlayerHealth : MonoBehaviour
             //we will need to toggle on post-procsessing on new camera
 
             //also we need to change priority on new virtual camera that we will create later (weaponCamera has priority 10)
-            deathCamera.Priority =deathCameraPriority ;
+            deathCamera.Priority = deathCameraPriority;
             Destroy(this.gameObject);
 
         }
 
+    }
+
+    void AdjustShieldBars(int healthAmountToShow)
+    {
+        int counter=0;
+        if (healthAmountToShow <= 0)
+        {
+            shieldBars[0].enabled = false;
+        }
+        else
+        {
+            foreach (var bar in shieldBars)
+            {
+                if (counter >= healthAmountToShow)
+                {
+
+                    bar.enabled = false;
+                }
+                counter++;
+            }
+            
+        }
+        
     }
    
 }
