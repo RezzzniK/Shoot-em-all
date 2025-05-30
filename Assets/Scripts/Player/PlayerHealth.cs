@@ -11,6 +11,11 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] Transform weaponCamera;//we need only transform from this camera to make transition to death camera
     [SerializeField] int deathCameraPriority = 20;
     [SerializeField] Image[] shieldBars;
+  
+    void Awake()
+    {
+        AdjustShieldBars(playerHealth);
+    }
     public void TakeDamage(int damageAmount)
     {
         playerHealth -= damageAmount;
