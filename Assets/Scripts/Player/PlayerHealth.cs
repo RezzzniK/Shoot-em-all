@@ -21,18 +21,7 @@ public class PlayerHealth : MonoBehaviour
         playerHealth -= damageAmount;
         Debug.Log("" + playerHealth);
         AdjustShieldBars(playerHealth);
-        if (playerHealth <= 0)
-        {
-            //before we destroy our player GameObj lets unparent our weapon camera:
-            weaponCamera.parent = null;
-            //before we transfer our weapon camera to another virtual camera, if post-processing was toggled on
-            //we will need to toggle on post-procsessing on new camera
-
-            //also we need to change priority on new virtual camera that we will create later (weaponCamera has priority 10)
-            deathCamera.Priority = deathCameraPriority;
-            Destroy(this.gameObject);
-
-        }
+       
 
     }
 
@@ -41,7 +30,18 @@ public class PlayerHealth : MonoBehaviour
         int counter=0;
         if (healthAmountToShow <= 0)
         {
-            shieldBars[0].enabled = false;
+             foreach (var bar in shieldBars)
+            {
+                    bar.enabled = false;
+            }
+            //before we destroy our player GameObj lets unparent our weapon camera:
+            weaponCamera.parent = null;
+            //before we transfer our weapon camera to another virtual camera, if post-processing was toggled on
+            //we will need to toggle on post-procsessing on new camera
+
+            //also we need to change priority on new virtual camera that we will create later (weaponCamera has priority 10)
+            deathCamera.Priority = deathCameraPriority;
+            Destroy(this.gameObject);
         }
         else
         {
@@ -54,7 +54,7 @@ public class PlayerHealth : MonoBehaviour
                 }
                 counter++;
             }
-            
+
         }
         
     }
