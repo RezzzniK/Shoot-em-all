@@ -1,4 +1,5 @@
 using System.Collections;
+
 using UnityEngine;
 
 public class Turret : MonoBehaviour
@@ -9,6 +10,7 @@ public class Turret : MonoBehaviour
     [Range(1,10)]
     [SerializeField] float turretFR = 10f;
     [SerializeField] GameObject turretProjectile;
+    [SerializeField] float travelTime=1f;
     PlayerHealth player;
     void Start()
     {
@@ -28,9 +30,12 @@ public class Turret : MonoBehaviour
     {
         while (player)
         {
-
             yield return new WaitForSeconds(turretFR);
-            Instantiate(turretProjectile, projetileSpawnPointPos.position, turretHead.rotation);
+            GameObject clone=Instantiate(turretProjectile, projetileSpawnPointPos.position, turretHead.rotation);
+            if (clone && playerTargetPoint)
+            {
+                clone.GetComponent<Rigidbody>().linearVelocity = (playerTargetPoint.position - clone.GetComponent<Transform>().position) / travelTime;
+            }
         }
     }                                        
 }

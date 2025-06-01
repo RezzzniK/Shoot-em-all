@@ -26,6 +26,15 @@ public class EnemyHealth : MonoBehaviour
         }
 
     }
+    public void Friendlfire(int damageAmount)
+    {
+      
+         hitPoints -= damageAmount;
+         if (hitPoints <= 0)
+        {
+            SelfDestruct();
+        }
+    }
 
     public void SelfDestruct()
     {
