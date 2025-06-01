@@ -24,9 +24,9 @@ public class Weapon : MonoBehaviour
         {
             // Debug.Log(hit.collider.gameObject);
             var enemy = hit.collider.gameObject.GetComponent<EnemyHealth>();
-            Instantiate(weaponSO.hitEffect, hit.point, Quaternion.identity);
             if (enemy != null)
             {
+                Instantiate(weaponSO.hitEffect, hit.point, Quaternion.identity);
                 enemy.TakeDamage(hit, weaponSO.Damage);
             }
         }

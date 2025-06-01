@@ -267,5 +267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoints: 10
   hitExp:
-  - {fileID: 0}
+  - {fileID: 280614503744773540, guid: 7b75f0f09c7bc394f96e94e885700a99, type: 3}
+  - {fileID: 5651314192571350924, guid: e89dca4cbe0d3734181b20eb9b2d4e1f, type: 3}
+  - {fileID: 2292882936124641526, guid: 771eae94062261141a9ba06f0108382f, type: 3}
   robotExp: {fileID: 4891984133201505550, guid: 9bf9cb2e058497d44bab6085487f8dbe, type: 3}

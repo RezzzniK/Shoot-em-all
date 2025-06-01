@@ -21,7 +21,7 @@ public class Robot : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == PLAYER)
+        if (other.tag == PLAYER && health != null)
         {
             health.SelfDestruct();
         }
