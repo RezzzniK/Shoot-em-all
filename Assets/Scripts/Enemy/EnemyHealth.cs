@@ -6,7 +6,14 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] int hitPoints = 10;
     [SerializeField] ParticleSystem[] hitExp;
     [SerializeField] ParticleSystem robotExp;
+    GameManager manager;
+
+    void Start()
+    {
     
+        manager = FindFirstObjectByType<GameManager>();
+        manager.updateEnemiesQuant(1);
+    }
     public void TakeDamage(RaycastHit hit, int damageAmount)
     {
         //TODO transform on the particle sys where is the hit point
@@ -39,6 +46,7 @@ public class EnemyHealth : MonoBehaviour
     public void SelfDestruct()
     {
         Instantiate(robotExp, transform.position, Quaternion.identity);
+        manager.updateEnemiesQuant(-1);
         Destroy(this.gameObject);
     }
 
